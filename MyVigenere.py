@@ -89,7 +89,7 @@ def main():
             vig_table[i].append(row[j])
         row = row[1:len(UPPER_ALPHABET)] + row[0]
     # Ask for key
-    key = input("Enter secret key: ")
+    key = input("Enter secret key (ALL CAPS LETTERS): ").upper()
     
     # Default action is to decode the file
     if p_encode:
