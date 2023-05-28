@@ -32,8 +32,8 @@ __version__ = "X0.0"
 __author__  = "P.Leclercq"
 
 #
-# Module to encode or decode a text with the Vigénère cipher
-# The Vigénère cipher combines a letter of the clear text with a letter from the secret key,
+# Module to encode or decode a text with the Vigenère cipher
+# The Vigenère cipher combines a letter of the clear text with a letter from the secret key,
 # and replaces it with the character found at the intersection of the row given by the clear text 
 # and the column given by the key in the following table:
 #   |ABCDEFGHIJKLMNOPQRSTUVWXYZ
@@ -81,7 +81,7 @@ def main():
     p_decode = args.decode
     p_encode = args.encode
 
-    # Build the Vigenere table 
+    # Build the Vigenère table 
     row = UPPER_ALPHABET
     for i in range(len(UPPER_ALPHABET)):
         vig_table.append([])
