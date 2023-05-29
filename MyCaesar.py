@@ -33,8 +33,9 @@ __author__  = "P.Leclercq"
 
 #
 # Module to encode or decode a text with the Caesar cipher
-# The Caesar cipher substitutes a letter with the one 3 positions higher
-# A -> D
+# The Caesar cipher substitutes a letter with the one placed some positions higher,
+# the difference being decided by the user.
+# Decoding the ciphertext is the same as encoding with a negative shift.
 #
 
 import argparse
@@ -44,61 +45,32 @@ UPPER_ALPHA = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 LOWER_ALPHA = "abcdefghijklmnopqrstuvwxyz"
 
 # Encode text
-def CaesarEncode(P_text):
+def CaesarEncode(P_text, P_shift):
     result = ""
-    for i in range(len(P_text)):
-        char = P_text[i]
+    for char in P_text:
         if char in UPPER_ALPHA:
-            result = result + chr(((ord(char) - ord("A") + 3) % 26) + ord("A"))
+            result = result + chr(((ord(char) - ord("A") + P_shift) % 26) + ord("A"))
         elif char in LOWER_ALPHA:
-            result = result + chr(((ord(char) - ord("a") + 3) % 26) + ord("a"))
+            result = result + chr(((ord(char) - ord("a") + P_shift) % 26) + ord("a"))
         else:
             result = result + char
     return result
-
-# Decode text
-def CaesarDecode(P_text):
-    result = ""
-    for i in range(len(P_text)):
-        char = P_text[i]       
-        if char in UPPER_ALPHA:
-            result = result + chr(((ord(char) - ord("A") - 3) % 26) + ord("A"))
-        elif char in LOWER_ALPHA:
-            result = result + chr(((ord(char) - ord("a") - 3) % 26) + ord("a"))
-        else:
-            result = result + char
-    return result
-
 
 # Main program
 def main():
     # Parse filename   
     parser = argparse.ArgumentParser()
     parser.add_argument("filename", help="File to be encoded or decoded")
-    parser.add_argument("-d", "--decode", help="Decode (default)", action = "store_true")
-    parser.add_argument("-e", "--encode", help="Encode", action = "store_true")
     args = parser.parse_args()
     p_filename = args.filename
-    p_decode = args.decode
-    p_encode = args.encode
-    
-    # Default action is to decode the file
-    if p_encode:
-        p_decode = False
-        print ("Encoding " + p_filename)
-    else:
-        p_decode = True
-        print ("Decoding " + p_filename)    
-
+    # Ask for the number of positions to shift the letter
+    shift = int(input("Shift: "))
     # Open the file
     with open(p_filename, 'r') as f:
-        # Initialize counters
         line = f.readline()
         while line:
-            if p_decode:
-                print(CaesarDecode(line), end = "")
-            else:
-                print(CaesarEncode(line), end = "")
+            # Encode the line
+            print(CaesarEncode(line, shift), end = "")
             line = f.readline()
     exit(0)        
 
