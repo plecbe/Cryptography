@@ -65,8 +65,7 @@ def main():
         while line:
             # Count lines and characters
             nblines += 1
-            for i in range(0,len(line)):
-                c = line[i]
+            for c in line:
                 if c.isalpha():
                     nbchar += 1
                     freq[c.upper()] += 1
@@ -87,7 +86,6 @@ def main():
     # Print translation table
     print ("Original alphabet: " + origdict)
     print ("Translated to    : " + REF_LIST)
-    # Prompt for modification
     ans = "a"
     ans1 = "y"
     loop = True
@@ -95,6 +93,7 @@ def main():
     while loop:
         loop = False
         while not ans in "ynYN":
+            # Prompt for modification
             ans = input("Do you want to make modifications (y/n)?")
             if ans in "yY":
                 ch1 = "*"
