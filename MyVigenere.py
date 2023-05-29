@@ -54,7 +54,6 @@ vig_table = []
 def VigenereEncode(P_text, P_key):
     result = ""
     for i in range(len(P_text)):
-        print("i: {0} char: {1} key: {2}".format(i, P_text[i],P_key[i % len(P_key)] ))
         result += vig_table[ord(P_text[i]) - ord("A")][ord(P_key[i % len(P_key)]) - ord("A")]
     return result
 
