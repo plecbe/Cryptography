@@ -84,8 +84,8 @@ def main():
     row = UPPER_ALPHABET
     for i in range(len(UPPER_ALPHABET)):
         vig_table.append([])
-        for j in range(len(UPPER_ALPHABET)):
-            vig_table[i].append(row[j])
+        for c in row:
+            vig_table[i].append(c)
         row = row[1:len(UPPER_ALPHABET)] + row[0]
     # Ask for key
     key = input("Enter secret key (ALL CAPS LETTERS): ").upper()
@@ -103,20 +103,20 @@ def main():
         text = f.read()
         # Strip text from non letters
         text1=""
-        for i in range(len(text)):
-            if text[i].isalpha():
-                if text[i].lower() in ["é", "è", "ê"]:
+        for c in text:
+            if c.isalpha():
+                if c.lower() in ["é", "è", "ê"]:
                     text1 += "E"
-                elif text[i].lower() in ["à", "â"]:
+                elif c.lower() in ["à", "â"]:
                     text1 += "A"
-                elif text[i].lower() in ["î"]:
+                elif c.lower() in ["î"]:
                     text1 += "I"
-                elif text[i].lower() in ["ô"]:
+                elif c.lower() in ["ô"]:
                     text1 += "O"
-                elif text[i].lower() in ["ù"]:
+                elif c.lower() in ["ù"]:
                     text1 += "U"
                 else:    
-                    text1 += text[i].upper()
+                    text1 += c.upper()
         # Encode or decode
         if p_decode:
             print(VigenereDecode(text1, key))
