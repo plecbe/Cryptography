@@ -44,7 +44,7 @@ import argparse
 UPPER_ALPHA = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 LOWER_ALPHA = "abcdefghijklmnopqrstuvwxyz"
 
-# Encode text
+# Encode text line
 def CaesarEncode(P_text, P_shift):
     result = ""
     for char in P_text:
