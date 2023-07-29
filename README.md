@@ -9,4 +9,4 @@ MyXor.py is an encode/decode tool using the exclusive OR (XOR) binary operator b
 
 MyVigenere.py is an encode/decode tool using the Vigenère algorithm (substitution with a character found in a matrix combining a character from the clear text and a character from a secret key).
 
-
+MySha1.py computes the SHA-1 hash of a file. Implemented following the English and French Wikipedia entries. 
