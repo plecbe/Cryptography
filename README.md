@@ -11,3 +11,4 @@ Various cryptographic tools
 - MySha1.py computes the SHA-1 hash of a file. Implemented following the English and French Wikipedia entries. 
 - MySha256.py computes the SHA-256 (SHA-2, length=256, 64 rounds) hash of a file. Implemented following the Wikipedia entry.
 - MyMd5.py computes the MD5 hash of a file.
+- MyRC4.py encodes/decodes text or hex values with the RC4 symetrical, variable key length stream encryption algorithm.
